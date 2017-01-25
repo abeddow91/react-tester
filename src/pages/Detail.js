@@ -36,10 +36,10 @@ class Detail extends React.Component {
     return (
       <div>
       {this.state.commits.map((commit, index) => (
-        <p key={index}>
-        <strong>{commit.author.login}</strong>:
+        (<p key={index}>
+        <strong>{commit.author ? commit.author.login : 'Anonymous'}</strong>:
         <a href={commit.html_url}>{commit.commit.message}</a>
-      </p>
+      </p>)
       ))}
       </div>);
   }
