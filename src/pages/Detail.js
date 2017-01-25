@@ -13,7 +13,7 @@ class Detail extends React.Component {
 
 
 //n.b SuperAgent code is asynchronous so the anonymous function will only run nce it is finished getting github's response
-//Also, response.body is supoerageny magic - it has detected that github responded with content type "application/json" and automatically converted githubs response into javascript objects which is why we can sent response.body straight into our state, as it is already a javascript array of objects ready to use. 
+//Also, response.body is supoerageny magic - it has detected that github responded with content type "application/json" and automatically converted githubs response into javascript objects which is why we can sent response.body straight into our state, as it is already a javascript array of objects ready to use.
 // is the name of the method and needs to be named exactly this in order for React to call it.
   componentWillMount() {
     //tells SuperAgent to fetch the list of commits to the React project from Github
@@ -23,6 +23,7 @@ class Detail extends React.Component {
           // starts a conditional statement: the following should run only when there is no error and there was a response from the server.
           if (!error && response) {
           // updates our component's state using the body value of the SuperAgent response
+            console.dir(response.body);
             this.setState({commits: response.body});
           } else {
             console.log('There was an error fetching from GitHub', error);
@@ -35,7 +36,10 @@ class Detail extends React.Component {
     return (
       <div>
       {this.state.commits.map((commit, index) => (
-        <p key={index}>some data here.</p>
+        <p key={index}>
+        <strong>{commit.author.login}</strong>:
+        <a href={commit.html_url}>{commit.commit.message}</a>
+      </p>
       ))}
       </div>);
   }
