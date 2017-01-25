@@ -33,14 +33,15 @@ class Detail extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-      {this.state.commits.map((commit, index) => (
-        (<p key={index}>
-        <strong>{commit.author ? commit.author.login : 'Anonymous'}</strong>:
-        <a href={commit.html_url}>{commit.commit.message}</a>
-      </p>)
-      ))}
+    return (  <div>
+      {this.state.commits.map((commit, index) => {
+          const author = commit.author ? commit.author.login : 'Anonymous';
+
+          return  (<p key={index}>
+            <strong>{author}</strong>:
+            <a href={commit.html_url}>{commit.commit.message}</a>
+            </p>);
+      })}
       </div>);
   }
 }
