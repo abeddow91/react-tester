@@ -11,17 +11,17 @@ import { Router, Route, IndexRoute, useRouterHistory, hashHistory, browserHistor
 import { createHashHistory } from 'history';
 //imports the React component into the app
 import Detail from './pages/Detail';
+import List from './pages/List';
 
 
 //kicks off the rendering of the app and takes 2 parameters: some jsx to render and where to render it p
-// const appHistory = useRouterHistory(createHashHistory)({ queryKey: false });
 
 
   //as we dont give the component a name, this name comes from the way we import it so if we used import Bob from './pages/detail'; them you could write <Bob /> and it would still work
   ReactDOM.render((
-    <Router history={browserHistory}>
-      <Route path="/" component={Detail}>
-      </Route>
+    <Router history={hashHistory} onUpdate={() => window.scrollTo(0, 0)}>
+      <Route path="/" component={Detail} />
+      <Route path="/react" component={List} />
     </Router>
   ), document.getElementById('app'))
 
