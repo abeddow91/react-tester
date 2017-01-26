@@ -19,8 +19,9 @@ class Detail extends React.Component {
 // is the name of the method and needs to be named exactly this in order for React to call it.
 
 fetchFeed(type){
+  const baseURL = 'https://api.github.com/repos/facebook';
   //   //tells SuperAgent to fetch the list of commits to the React project from Github
-  ajax.get(`https://api.github.com/repos/facebook/react/${type}`)
+  ajax.get(`${baseURL}/${this.props.params.repo}/${type}`)
   //   //tells SuperAgent what to do when the request finishes it should run the anonymous function that follows
       .end((error,response) => {
   // starts a conditional statement: the following should run only when there is no error and there was a response from the server.
