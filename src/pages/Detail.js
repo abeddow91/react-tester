@@ -40,18 +40,6 @@ fetchFeed(type){
     this.fetchFeed('forks');
   }
 
-  showCommits(){
-    this.setState({ mode: "commits"});
-  }
-
-  showPulls(){
-    this.setState({ mode: "pulls"});
-  }
-
-  showForks(){
-    this.setState({ mode: "forks"});
-  }
-
   renderCommits() {
       return this.state.commits.map((commit, index) => {
           const author = commit.author ? commit.author.login : 'Anonymous';
@@ -86,6 +74,10 @@ renderPulls() {
   });
 }
 
+selectMode(mode){
+  this.setState({ mode: mode});
+}
+
 render() {
    let content;
 
@@ -98,9 +90,9 @@ render() {
     }
 
     return (<div>
-      <button onClick={this.showCommits.bind(this)}>Show Commits</button>
-      <button onClick={this.showPulls.bind(this)}>Show Pulls</button>
-      <button onClick={this.showForks.bind(this)}>Show Forks</button>
+      <button onClick={this.selectMode.bind(this, 'commits')}>Show Commits</button>
+      <button onClick={this.selectMode.bind(this, 'pulls')}>Show Pulls</button>
+      <button onClick={this.selectMode.bind(this, 'forks')}>Show Forks</button>
       {content}
       </div>);
   }
