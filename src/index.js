@@ -20,8 +20,8 @@ import List from './pages/List';
   //as we dont give the component a name, this name comes from the way we import it so if we used import Bob from './pages/detail'; them you could write <Bob /> and it would still work
   ReactDOM.render((
     <Router history={hashHistory} onUpdate={() => window.scrollTo(0, 0)}>
-      <Route path="/" component={Detail} />
-      <Route path="/react" component={List} />
+      <Route path="/" component={List} />
+      <Route path="/react" component={Detail} />
     </Router>
   ), document.getElementById('app'))
 
