@@ -20,7 +20,7 @@ const routes = (
   <Route path="/" component={App}>
     <IndexRoute component={List} />
     <Route path="detail/:repo" component={Detail} />
-    <Route path="user" component={User} />
+    <Route path="user/:username" component={User} />
   </Route>
 );
 

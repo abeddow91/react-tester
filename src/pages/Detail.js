@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 //you can use whatever you want instead of ajax, such as request.
 import ajax from 'superagent';
 
@@ -46,7 +47,7 @@ fetchFeed(type){
           const author = commit.author ? commit.author.login : 'Anonymous';
 
           return (<p key={index}>
-              <strong>{author}</strong>:
+              <strong><Link to={`/user/${author}`}>{author}</Link></strong>:
               <a href={commit.html_url}>{commit.commit.message}</a>.
           </p>);
       });
@@ -57,7 +58,7 @@ fetchFeed(type){
               const owner = fork.owner ? fork.owner.login : 'Anonymous';
 
               return (<p key={index}>
-                  <strong>{owner}</strong>: forked to
+                  <strong><Link to={`/user/${owner}`}>{owner}</Link></strong>: forked to
                   <a href={fork.html_url}>{fork.html_url}</a> at {fork.created_at}.
               </p>);
           });
@@ -68,7 +69,7 @@ renderPulls() {
     const user = pull.user ? pull.user.login : 'Anonymous';
 
     return (<p key={index}>
-      <strong>{user}</strong>:
+      <strong><Link to={`/user/${user}`}>{user}</Link></strong>:
       <a href={pull.html_url}>{pull.title}</a>
       <p>State: {pull.state}</p>
       </p>)
