@@ -11,6 +11,7 @@ import { createHashHistory } from 'history';
 import App from './pages/App';
 import Detail from './pages/Detail';
 import List from './pages/List';
+import User from './pages/User';
 
 //as we dont give the component a name, this name comes from the way we import it so if we used import Bob from './pages/detail'; them you could write <Bob /> and it would still work
 
@@ -19,6 +20,7 @@ const routes = (
   <Route path="/" component={App}>
     <IndexRoute component={List} />
     <Route path="detail/:repo" component={Detail} />
+    <Route path="user" component={User} />
   </Route>
 );
 
